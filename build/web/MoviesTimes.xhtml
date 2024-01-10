@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Show Times for a Movie</title>
+        <style type="text/css">
+            body {
+                background-color: #131516; /* black */
+                color: #FFFFFF; /* white */
+            }
+            .title {
+                background-color: #f00428; /* red */
+                font-size: 40px;
+                padding-bottom: 15px;
+                padding-top: 15px;
+                padding-left: 15px;
+            }
+            .times {
+                font-size: 20px;
+                padding: 10px;
+            }
+            .action {
+                margin-top: 15px;
+                margin-right: 10px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h3 class="title">Show Times for #{showTheaterBean.movie.movieName}</h3>
+            <h:form class="times">
+                <h:dataTable value="#{showTheaterBean.timeList}" var="movietime">
+                    <h:column class="col1">
+                        <f:facet name="header">
+                            <h:outputText value="Show Time"/>
+                        </f:facet>
+                        <h:outputText value="#{movietime.movieTimesPK.showTime}"/>
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="Select"                                  
+                                         action="#{showTheaterBean.showPurchasePage()}"> <!-- Go to next page -->
+                            <f:param name="theaterID" value="#{movietime.movieTimesPK.theaterID}" />
+                            <f:param name="movieID" value="#{movietime.movieTimesPK.movieID}" />
+                            <f:param name="showTime" value="#{movietime.movieTimesPK.showTime}" />
+                        </h:commandButton>        
+                    </h:column>     
+                </h:dataTable>
+                <h:commandButton class="action" value="Back to Main"                                  
+                                 action="index.xhtml"/>  <!-- Go to main page -->
+                <h:commandButton class="action" value="Back to Theater"                                  
+                                 action="#{showTheaterBean.backToTheater}"> 
+                    <f:param name="theaterID" value="#{showTheaterBean.theater.theaterID}" />
+                </h:commandButton> <!-- Go back to theater selection -->
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

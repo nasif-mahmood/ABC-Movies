@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Purchase a Ticket</title>
+        <style type="text/css">
+            body {
+                background-color: #131516; /* black */
+                color: #FFFFFF; /* white */
+            }
+            .title {
+                background-color: #f00428; /* red */
+                font-size: 40px;
+                padding-bottom: 15px;
+                padding-top: 15px;
+                padding-left: 15px;
+            }
+            .btn {
+                margin-left: 5px;
+            }
+            .input {
+                margin-left:10px;
+            }
+            
+        </style>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h1 class="title">Thank you!</h1>
+            <h3>You have bought #{inputsBean.inputs.numtickets} tickets for #{showTheaterBean.movie.movieName} at #{showTheaterBean.theater.theaterName} at #{showTheaterBean.movietimes.movieTimesPK.showTime}</h3>
+            <h4>Total price = #{inputsBean.inputs.price}</h4>
+            <h:form>
+                <h:commandButton value="Back to Main"                                  
+                                 action="index.xhtml"/> <!-- Go to main page --> 
+                <h:commandButton value="Back to Theater"                                  
+                                 action="#{showTheaterBean.backToTheater}"> 
+                    <f:param name="theaterID" value="#{showTheaterBean.theater.theaterID}" />
+                </h:commandButton> <!-- Go to theater selection -->
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

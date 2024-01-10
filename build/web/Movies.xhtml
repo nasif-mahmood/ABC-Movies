@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Movies for a Theater</title>
+        <style type="text/css">
+            body {
+                background-color: #131516; /* black */
+                color: #FFFFFF; /* white */
+            }
+            .head {
+                background-color: #f00428; /* red */
+                font-size: 30px;
+                padding: 25px;
+            }
+            .label { /* Table column labels*/
+                font-size: 25px;
+                margin-bottom: 50px;
+            }
+            .info { /* Table data */    
+                font-size: 20px;
+                
+            }
+            .poster {
+                height: 200px;
+                width: auto;
+            }
+            .movieName {
+                padding-right: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h3 class="head">Movies for #{showTheaterBean.theater.theaterName}</h3>
+            <h:form>
+                <h:dataTable value="#{showTheaterBean.uniqueMovieList}" var="movie">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText class="label" value="Title"/>
+                        </f:facet>
+                        <h:outputText class="info" value="#{movie.movieName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText class="label" value="Description"/>
+                        </f:facet>
+                        <h:outputText class="info" value="#{movie.description}"/>
+                    </h:column>
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText class="label" value="Poster"/>
+                        </f:facet>
+                        <h:graphicImage class="poster" value="#{movie.poster}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText class="label" value="Times"/>
+                        </f:facet>
+                        <h:commandButton value="Show Movie Times"                                  
+                                         action="#{showTheaterBean.showMovieTimes(movie)}">  <!-- Go to next page -->
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>
+                <h:commandButton value="Back to Main"                                  
+                                 action="index.xhtml"/>  <!-- Back to main page -->
+                <h:commandButton value="Back to Theater"                                  
+                                 action="#{showTheaterBean.backToTheater}"> 
+                    <f:param name="theaterID" value="#{showTheaterBean.theater.theaterID}" /> <!-- Go back to theater selection -->
+                </h:commandButton>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

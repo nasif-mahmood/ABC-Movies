@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Welcome to ABC Theaters</title>
+        <!-- inline stylesheet, could be put in a css file -->
+        <style type="text/css">
+         input.zip { /* Where user inputs zipcode */
+             margin: 0;
+             padding: 0;
+             text-align: left;
+             background-color: #131516; /* black */
+             color: #FFFFFF; /* white */
+             height: 25px;
+             width: 200px;
+         }
+         div.navbar { /* Holds zipcode search*/
+             background-color: #f00428; /* black */
+             position: fixed;
+             right:20px;
+             top:29px;
+         }
+         .hold { /* Encompasses nav bar */
+             padding-top: 10px;
+             padding-bottom: 50px;
+             background-color: #f00428; /* red */
+             color: #FFFFFF; /* white */
+         }
+         body {
+             background-color: #131516; /* black */
+         }
+         .title {
+             position:fixed; 
+             left:20px;
+             top: 5px;   
+         }
+         .pic { /* Format the movie posters */
+             height: 400px;
+             width: auto;
+             
+         }
+         .movie { /* Format movie poster and caption */
+             vertical-align: top;
+             display: inline-block;
+             text-align: center;
+         }
+         .caption {
+             color: #FFFFFF;
+             display:block;
+         }
+         .gallery { /* Format all posters and captions */
+             text-align: center;
+             padding: 50px;
+             color: #FFFFFF;
+         }
+         .subtitle{
+             padding: 20px;
+         }
+         
+         
+         
+         
+        </style>
+    </h:head>
+    <h:body>
+        <div class="hold">
+            <h1 class="title">ABC Movies</h1>
+            <div class="navbar">
+                <h:form>
+                    <h:inputText id="zip" value="#{inputsBean.inputs.zipcode}" validator="#{showTheaterBean.validateZipcode}"/> <!-- save zipcode -->
+                    <h:commandButton  value="Find zipcode" action="#{showTheaterBean.showTheater(theater)}" /> <!-- Find theaters with matching zipcode -->
+                    <h:message for="zip" />
+                </h:form>
+            </div>
+        </div>
+        
+        <div class="gallery">
+            <h2 class="subtitle">Featured Movies</h2>
+            <div class="movie">
+                <img class="pic" src='Thor.jpg' />
+                <span class="caption">Thor: Love and Thunder</span>
+            </div>
+            <div class="movie">
+                <img class="pic" src='minions.jpg' />
+                <span class="caption">Minions: The Rise of Gru</span>
+            </div>
+            <div class="movie">
+                <img class="pic" src="lightyear.jpg" />
+                <span class="caption">Lightyear</span> 
+            </div>
+            <div class="movie">
+                <img class="pic" src='nope.jpg' />
+                <span class="caption">Nope</span>    
+            </div>
+            <div class="movie">
+                <img class="pic" src='doctor strange.jpg' />
+                <span class="caption">Doctor Strange in the Multiverse of Madness</span>
+            </div>
+            <div class="movie">
+                <img class="pic" src='sonic.jpg' />
+                <span class="caption">Sonic the Hedgehog 2</span>
+            </div>
+        </div>
+    </h:body>
+</html>
+

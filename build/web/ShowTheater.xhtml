@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Theater Information</title>
+        <style type="text/css">
+            body {
+                padding-left: 20px;
+                background-color: #131516;
+                color: #bd0d27;
+                font-size: 20px;
+            }
+            input {
+                background-color: #FFFFFF;
+                color: #bd0d27;
+                font-size: 15px;
+                height: 30px;
+                width: 120px;
+            }
+            td {
+                
+                height: 30px;
+                width: 200px;
+                padding-right: 5px;
+                padding-bottom: 5px;
+                font-size: 20px;
+            }
+            table {
+                margin-bottom: 30px;
+                background-color: #FFFFFF;
+                color: #bd0d27;
+            }
+            .title {
+                background-color: #f00428; /* red */
+                color: #FFFFFF;
+                font-size: 40px;
+                padding-bottom: 15px;
+                padding-top: 15px;
+                padding-left: 15px;
+            }
+            
+        </style>
+    </h:head>
+    <h:body>
+        <h1 class="title">Select a Theater</h1>
+        <div class="main">
+            <f:view>
+                <h:form>
+                    <h:dataTable styleClass="people"
+                                 value="#{mainPageBean.getTheaterListZip(inputsBean.inputs.zipcode)}" var="theater"> <!-- Get theaters with user inputted zipcode -->
+                    <h:column>
+                      <f:facet name="header">
+                        <h:outputText value="Select"/>
+                      </f:facet>
+                      <h:commandLink value="Show" 
+                                 action="#{showTheaterBean.showTheater(theater)}" > <!-- Click to specify theater. Will show theater info -->
+                      </h:commandLink>
+                    </h:column>
+                    <h:column>
+                      <f:facet name="header">
+                        <h:outputText value="Name"/>
+                      </f:facet>
+                        <h:outputText value="#{theater.theaterName}"/>
+                    </h:column>
+                    </h:dataTable>
+                </h:form>
+            </f:view>
+        </div>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Theater Name : "/>
+                <h:outputText value="#{showTheaterBean.theater.theaterName}"/>
+                <h:outputLabel value="Theater Address : "/>
+                <h:outputText value="#{showTheaterBean.theater.address}"/>
+                <h:outputLabel value="Theater Zipcode : " />
+                <h:outputText value="#{showTheaterBean.theater.zipcode}" />
+            </h:panelGrid>
+            <h:commandButton value="Back to List"                                  
+                             action="index.xhtml"/>   
+            <h:commandButton value="Show Movies"                                  
+                             action="#{showTheaterBean.showMovies()}"
+                             rendered="#{showTheaterBean.theater != null}"> 
+                <f:param name="theaterID" value="#{showTheaterBean.theater.theaterID}" /> <!-- Go to next page -->
+            </h:commandButton>
+         </h:form>
+     
+    </h:body>
+</html>
+

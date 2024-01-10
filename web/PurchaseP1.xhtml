@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Purchase a Ticket</title>
+        <style type="text/css">
+            body {
+                background-color: #131516; /* black */
+                color: #FFFFFF; /* white */
+            }
+            .title {
+                background-color: #f00428; /* red */
+                font-size: 40px;
+                padding-bottom: 15px;
+                padding-top: 15px;
+                padding-left: 15px;
+            }
+            .numTickets {
+                font-size: 20px;
+                margin-right: 20px;
+            }
+            .btn {
+                margin-left: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h3 class="title">Purchase a ticket for #{showTheaterBean.movie.movieName}</h3>
+            <h2>#{showTheaterBean.theater.theaterName} | #{showTheaterBean.movietimes.movieTimesPK.showTime}</h2>
+            <h:form>
+                <h:outputLabel class="numTickets" value="Number of tickets" />
+                <h:inputText value="#{inputsBean.inputs.numtickets}" validator="#{showTheaterBean.validateTickets}"/> <!--  Enter number of tickets -->
+                <h:commandButton class="btn" value="Confirm tickets"                                  
+                                 action="PurchaseP2.xhtml"/>  <!--  Go to next page -->
+                <h:commandButton class="btn" value="Back to Main"                                  
+                                 action="index.xhtml"/>  <!-- Back to main page -->
+                <h:commandButton class="btn" value="Back to Theater"                                  
+                                 action="#{showTheaterBean.backToTheater}"> 
+                    <f:param name="theaterID" value="#{showTheaterBean.theater.theaterID}" /> 
+                </h:commandButton> <!-- Back to theater selection -->
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+
