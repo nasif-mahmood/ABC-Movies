@@ -55,3 +55,23 @@
 
 #### Confirmation.xhtml
  Page after PurchaseP2.xhtml. Displays movie name, theater, time, and price to the user. Gives options to go back to main page or theater selection.
+
+## Screenshots
+
+### Landing Page
+![image](https://github.com/nasif-mahmood/ABC-Movies/blob/main/part%201.png)
+
+### Selecting a theater after entering a zip code
+![image](https://github.com/nasif-mahmood/ABC-Movies/blob/main/part%202.1.png)
+![image](https://github.com/nasif-mahmood/ABC-Movies/blob/main/part%202.2.png)
+
+### Showcasing movies at specific theater
+![image](https://github.com/nasif-mahmood/ABC-Movies/blob/main/part%203.png)
+
+### Showtimes for chosen movie
+![image](https://github.com/nasif-mahmood/ABC-Movies/blob/main/part%204.png)
+
+### Purchasing tickets
+![image](https://github.com/nasif-mahmood/ABC-Movies/blob/main/part%205.png)
+![image](https://github.com/nasif-mahmood/ABC-Movies/blob/main/part%206.png)
+![image](https://github.com/nasif-mahmood/ABC-Movies/blob/main/part%206.png)
